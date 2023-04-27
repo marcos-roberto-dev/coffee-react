@@ -1,9 +1,13 @@
-function App() {
+import { ThemeProvider } from 'styled-components'
+import { Router } from './Router'
+import { GlobalStyles } from './styles/global'
+import { defaultTheme } from './styles/themes/default'
+
+export function App() {
   return (
-    <>
-      <h1>hello coffee</h1>
-    </>
+    <ThemeProvider theme={defaultTheme}>
+      <Router />
+      <GlobalStyles />
+    </ThemeProvider>
   )
 }
-
-export default App
