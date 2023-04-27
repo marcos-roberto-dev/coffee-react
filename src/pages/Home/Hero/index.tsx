@@ -7,7 +7,7 @@ import {
 import HeroImg from '../../../assets/hero.svg'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 
-export function Hero() {
+export function HeroSection() {
   return (
     <HeroContainer>
       <div>

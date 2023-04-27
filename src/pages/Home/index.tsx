@@ -1,10 +1,12 @@
-import { Hero } from './Hero'
+import { CoffeesSection } from './Coffees'
+import { HeroSection } from './Hero'
 import { HomeContainer } from './styled'
 
 export function HomePage() {
   return (
     <HomeContainer>
-      <Hero />
+      <HeroSection />
+      <CoffeesSection />
     </HomeContainer>
   )
 }
