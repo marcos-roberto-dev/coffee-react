@@ -1,3 +1,10 @@
+import { Hero } from './Hero'
+import { HomeContainer } from './styled'
+
 export function HomePage() {
-  return <h1>Home</h1>
+  return (
+    <HomeContainer>
+      <Hero />
+    </HomeContainer>
+  )
 }
