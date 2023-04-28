@@ -3,11 +3,28 @@ import styled from 'styled-components'
 export const CheckoutOrderContainer = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
   > h2 {
     margin-bottom: 1rem;
   }
 `
+export const CheckoutHeaderContent = styled.div`
+  display: flex;
+  align-items: start;
+  line-height: 130%;
+  gap: 0.5rem;
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: ${(props) => props.theme['--base-subtitle']};
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: ${(props) => props.theme['--base-text']};
+  }
+`
+
 export const FormCard = styled.div`
   width: 40rem;
 `
@@ -44,5 +61,9 @@ export const SelectedKindPayment = styled.div`
     display: flex;
     list-style: none;
     gap: 0.75rem;
+
+    li {
+      flex: 1;
+    }
   }
 `

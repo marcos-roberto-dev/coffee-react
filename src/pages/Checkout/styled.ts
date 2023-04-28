@@ -4,7 +4,8 @@ export const CheckoutContainer = styled.main`
   overflow: hidden;
   margin-top: 2.5rem;
   margin-bottom: 15rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 40rem 28rem;
   gap: 2rem;
   h2 {
     font-family: 'Baloo 2', sans-serif;

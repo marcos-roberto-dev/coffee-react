@@ -7,12 +7,14 @@ import {
 } from 'phosphor-react'
 import { Card } from '../../../components/Card'
 import {
+  CheckoutHeaderContent,
   CheckoutOrderContainer,
   FormCard,
   FormInputs,
   SelectedKindPayment,
 } from './styles'
 import { Button } from '../../../components/Buttons'
+import { defaultTheme } from '../../../styles/themes/default'
 
 export function CheckoutOrder() {
   return (
@@ -21,11 +23,13 @@ export function CheckoutOrder() {
       <Card>
         <FormCard>
           <header>
-            <MapPinLine />
-            <div>
-              <div>Endereço de Entrega</div>
-              <div>Informe o endereço onde deseja receber seu pedido</div>
-            </div>
+            <CheckoutHeaderContent>
+              <MapPinLine size={22} color={defaultTheme['--yellow-dark']} />
+              <div>
+                <h3>Endereço de Entrega</h3>
+                <p>Informe o endereço onde deseja receber seu pedido</p>
+              </div>
+            </CheckoutHeaderContent>
           </header>
 
           <FormInputs>
@@ -43,31 +47,34 @@ export function CheckoutOrder() {
       <Card>
         <SelectedKindPayment>
           <header>
-            <CurrencyDollar />
-            <div>
-              <div>Pagamento</div>
+            <CheckoutHeaderContent>
+              <CurrencyDollar size={22} color={defaultTheme['--purple']} />
               <div>
-                O pagamento é feito na entrega. Escolha a forma que deseja pagar
+                <h3>Pagamento</h3>
+                <p>
+                  O pagamento é feito na entrega. Escolha a forma que deseja
+                  pagar
+                </p>
               </div>
-            </div>
+            </CheckoutHeaderContent>
           </header>
 
           <ul>
             <li>
               <Button size="large" variant="default">
-                <CreditCard size={16} />
+                <CreditCard size={16} color={defaultTheme['--purple']} />
                 Cartão de Crédito
               </Button>
             </li>
             <li>
               <Button size="large" variant="default">
-                <Bank size={16} />
+                <Bank size={16} color={defaultTheme['--purple']} />
                 Cartão de Débito
               </Button>
             </li>
             <li>
               <Button size="large" variant="default">
-                <Money size={16} />
+                <Money size={16} color={defaultTheme['--purple']} />
                 Dinheiro
               </Button>
             </li>

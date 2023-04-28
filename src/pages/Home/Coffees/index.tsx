@@ -1,13 +1,14 @@
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import {
   CoffeContentText,
   CoffeFooter,
   CoffeItem,
-  CoffeeControlShip,
+  CoffeeControl,
   CoffeeListContainer,
   CoffeePrice,
   CoffeesContainer,
 } from './styles'
+import { ButtonQuantityItem } from '../../../components/ButtonQuantityItem'
+import { ShoppingCart } from 'phosphor-react'
 const coffees = [
   {
     id: 1,
@@ -81,20 +82,12 @@ export function CoffeesSection() {
                 <span>R$ </span>
                 <strong>9,90</strong>
               </CoffeePrice>
-              <CoffeeControlShip>
-                <div>
-                  <button>
-                    <Minus size={14} />
-                  </button>
-                  <input type="number" step={1} min={1} value={1} />
-                  <button>
-                    <Plus size={14} />
-                  </button>
-                </div>
+              <CoffeeControl>
+                <ButtonQuantityItem />
                 <button>
                   <ShoppingCart size={22} weight="fill" />
                 </button>
-              </CoffeeControlShip>
+              </CoffeeControl>
             </CoffeFooter>
           </CoffeItem>
         ))}

@@ -54,6 +54,7 @@ export const BaseButton = styled.button<ButtonPropsStyle>`
   cursor: cursor;
   transition: background 0.1s, color 0.1s;
   position: relative;
+  width: 100%;
 
   ${(props) =>
     props.active &&

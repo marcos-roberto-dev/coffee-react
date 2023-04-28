@@ -76,6 +76,24 @@ export const CoffeFooter = styled.footer`
   gap: 1.4375rem;
   align-items: center;
 `
+
+export const CoffeeControl = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  height: 2.375rem;
+
+  & > button {
+    background-color: ${(props) => props.theme['--purple-dark']};
+    color: ${(props) => props.theme['--white']};
+    width: 2.375rem;
+    height: 100%;
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`
 export const CoffeePrice = styled.div`
   span {
     font-size: 0.875rem;
@@ -84,48 +102,5 @@ export const CoffeePrice = styled.div`
     font-family: 'Baloo 2', sans-serif;
     font-size: 1.5rem;
     font-weight: bolder;
-  }
-`
-
-export const CoffeeControlShip = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  input {
-    background: transparent;
-    width: 100%;
-    border: 0;
-    outline: none;
-    text-align: center;
-    font-weight: bold;
-  }
-
-  button {
-    background: none;
-    border: none;
-    outline: none;
-    display: flex;
-    cursor: pointer;
-    color: ${(props) => props.theme['--purple-dark']};
-  }
-
-  > button:last-child {
-    background-color: ${(props) => props.theme['--purple-dark']};
-    color: ${(props) => props.theme['--white']};
-    padding: 0.5rem;
-    border-radius: 0.375rem;
-  }
-
-  div:first-child {
-    background-color: ${(props) => props.theme['--base-button']};
-    display: flex;
-    gap: 0.25rem;
-    align-items: center;
-    padding: 0.75rem 0.5rem;
-    justify-content: space-between;
-    width: 4.5rem;
-    height: 2.375rem;
-    border-radius: 0.375rem;
   }
 `
