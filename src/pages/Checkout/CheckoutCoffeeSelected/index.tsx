@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom'
+
 import { Button } from '../../../components/Buttons'
 import { Card } from '../../../components/Card'
 import {
@@ -37,9 +39,11 @@ export function CheckoutCoffeeSelected() {
                 <h4>R$ 33,20</h4>
               </div>
             </CheckoutAmount>
-            <Button size="normal" variant="yellow">
-              Confirmar Pedido
-            </Button>
+            <NavLink to="/success">
+              <Button size="normal" variant="yellow">
+                Confirmar Pedido
+              </Button>
+            </NavLink>
           </div>
         </Card>
       </CheckoutCoffeeListContainer>

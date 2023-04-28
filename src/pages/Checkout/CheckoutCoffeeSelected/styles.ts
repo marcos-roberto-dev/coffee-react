@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const CheckoutCoffeeSelectedContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* border-radius: 0.375rem 2.25rem 0.375rem 2.25rem; */
 
   > h2 {
     margin-bottom: 1rem;
