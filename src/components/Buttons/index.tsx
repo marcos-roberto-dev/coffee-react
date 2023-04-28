@@ -1,14 +1,14 @@
 import { ReactNode } from 'react'
-import { SmallButton } from './styles'
-import * as Icon from 'phosphor-react'
+import { LargeButton, NormalButton, SmallButton } from './styles'
 
 interface ButtonProps {
   children?: ReactNode
   size?: 'small' | 'normal' | 'large'
-  outline?: boolean
-  variant?: 'default' | 'location' | 'shopping'
+  active?: boolean
+  variant?: 'default' | 'purpleLight' | 'yellowLight' | 'yellow'
   tip?: boolean
   clickable?: boolean
+  contentTip?: string
 }
 
 export function Button({
@@ -17,36 +17,28 @@ export function Button({
   variant = 'default',
   tip = false,
   clickable = true,
-  outline = false,
+  active = false,
+  contentTip,
 }: ButtonProps) {
-  const IconsComponents = {
-    location: {
-      Component: Icon.MapPin,
-      weight: 'fill',
-      size: 22,
-    },
-    shopping: {
-      Component: Icon.ShoppingCart,
-      weight: 'fill',
-      size: 22,
-    },
-    default: {
-      Component: Icon.House,
-      weight: 'fill',
-      size: 22,
-    },
-  } as const
-
-  const { Component, ...propsIcons } = IconsComponents[variant]
-
   return (
     <>
       {size === 'small' && (
-        <SmallButton variant={variant}>
-          <Component {...propsIcons} />
+        <SmallButton variant={variant} clickable={clickable} active={active}>
           {children}
-          {tip && <span>1</span>}
+          {tip && <span>{contentTip}</span>}
         </SmallButton>
+      )}
+      {size === 'normal' && (
+        <NormalButton variant={variant} clickable={clickable} active={active}>
+          {children}
+          {tip && <span>{contentTip}</span>}
+        </NormalButton>
+      )}
+      {size === 'large' && (
+        <LargeButton variant={variant} clickable={clickable} active={active}>
+          {children}
+          {tip && <span>{contentTip}</span>}
+        </LargeButton>
       )}
     </>
   )

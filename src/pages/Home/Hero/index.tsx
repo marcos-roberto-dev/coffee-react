@@ -46,7 +46,9 @@ export function HeroSection() {
           </IconWithLabel>
         </HeroIconsContainer>
       </div>
-      <img src={HeroImg} alt="Imagem principal" />
+      <div>
+        <img src={HeroImg} alt="Imagem principal" />
+      </div>
     </HeroContainer>
   )
 }

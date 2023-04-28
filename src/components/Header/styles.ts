@@ -5,6 +5,10 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 2rem 0;
+  position: sticky;
+  top: 0;
+  background: ${(props) => props.theme['--background']};
+  z-index: 2;
 
   img {
     height: 2.625rem;

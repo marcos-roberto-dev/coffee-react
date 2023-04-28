@@ -1,6 +1,14 @@
 import styled from 'styled-components'
 
-export const CoffeesContainer = styled.section``
+export const CoffeesContainer = styled.section`
+  margin-bottom: 9.8125rem;
+  overflow: hidden;
+  h2 {
+    font-size: 2rem;
+    font-family: 'Baloo 2', sans-serif;
+    line-height: 130%;
+  }
+`
 
 export const CoffeeListContainer = styled.div`
   display: grid;
@@ -91,12 +99,6 @@ export const CoffeeControlShip = styled.div`
     outline: none;
     text-align: center;
     font-weight: bold;
-  }
-
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
   }
 
   button {

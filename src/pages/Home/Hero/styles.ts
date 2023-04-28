@@ -19,29 +19,33 @@ export const HeroContainer = styled.section`
   gap: 3.5rem;
   position: relative;
 
-  &::before {
-    content: '';
-    display: block;
-    width: 20rem;
-    height: 15rem;
-    position: absolute;
-    top: 4rem;
-    right: 3rem;
-    border-radius: 50%;
-    box-shadow: -5rem 0 6rem 2rem ${(props) => props.theme['--yellow-light']};
-  }
+  > div:last-child {
+    position: relative;
 
-  &::after {
-    content: '';
-    display: block;
-    width: 10rem;
-    height: 10rem;
-    position: absolute;
-    top: 4rem;
-    right: 3rem;
-    border-radius: 50%;
-    box-shadow: -3.5rem -0.275rem 5rem 2rem ${(props) => props.theme['--yellow']};
-    z-index: -1;
+    &::before {
+      content: '';
+      display: block;
+      width: 20rem;
+      height: 15rem;
+      position: absolute;
+      top: 4rem;
+      right: 3rem;
+      border-radius: 50%;
+      box-shadow: -5rem 0 6rem 2rem ${(props) => props.theme['--yellow-light']};
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: 10rem;
+      height: 10rem;
+      position: absolute;
+      top: 4rem;
+      right: 3rem;
+      border-radius: 50%;
+      box-shadow: -3.5rem -0.275rem 5rem 2rem ${(props) => props.theme['--yellow']};
+      z-index: -1;
+    }
   }
 
   img {
