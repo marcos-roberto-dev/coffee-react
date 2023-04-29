@@ -1,41 +1,44 @@
 import { Trash } from 'phosphor-react'
-import { Button } from '../../../components/Buttons'
-import { ButtonQuantityItem } from '../../../components/ButtonQuantityItem'
-import { defaultTheme } from '../../../styles/themes/default'
+import { Button } from '../../../../components/Buttons'
+import { ButtonQuantityItem } from '../../../../components/ButtonQuantityItem'
+import { defaultTheme } from '../../../../styles/themes/default'
 import {
   CheckoutCoffeeItemContainer,
   CheckoutCoffeeItemControl,
 } from './styles'
 
-import CoffeeIMG from '../../../assets/coffees/americano.svg'
-import {
-  CoffeeItem,
-  ShoppingCartContext,
-} from '../../../context/ShoppingCartContext'
-import { useContext } from 'react'
+import CoffeeIMG from '../../../../assets/coffees/americano.svg'
+import { CoffeeItem } from '../../../../context/ShoppingCartContext'
 
 interface CheckoutCoffeeItemProps {
   coffee: CoffeeItem
+  onHandleMinusQuantityChange: (coffee: CoffeeItem) => void
+  onHandlePlusQuantityChange: (coffee: CoffeeItem) => void
+  onHandleChangeQuantity: (coffee: CoffeeItem, qnt: number) => void
+  onHandleRemoveCoffeeInShoppingCart: (coffee: CoffeeItem) => void
 }
 
-export function CheckoutCoffeeItem({ coffee }: CheckoutCoffeeItemProps) {
-  const { addCoffeInShoppingCart, removeCoffeeInShoppingCart } =
-    useContext(ShoppingCartContext)
-
+export function CheckoutCoffeeItem({
+  coffee,
+  onHandleChangeQuantity,
+  onHandleMinusQuantityChange,
+  onHandlePlusQuantityChange,
+  onHandleRemoveCoffeeInShoppingCart,
+}: CheckoutCoffeeItemProps) {
   function handlePlusQuantityChange() {
-    addCoffeInShoppingCart({ ...coffee, qnt: coffee.qnt + 1 })
+    onHandlePlusQuantityChange(coffee)
   }
 
   function handleMinusQuantityChange() {
-    addCoffeInShoppingCart({ ...coffee, qnt: coffee.qnt - 1 })
+    onHandleMinusQuantityChange(coffee)
   }
 
-  function handleChangeQuantityChange(qnt: number) {
-    addCoffeInShoppingCart({ ...coffee, qnt })
+  function handleChangeQuantity(qnt: number) {
+    onHandleChangeQuantity(coffee, qnt)
   }
 
   function handleRemoveCoffeeInShoppingCart() {
-    removeCoffeeInShoppingCart(coffee.id)
+    onHandleRemoveCoffeeInShoppingCart(coffee)
   }
 
   return (
@@ -49,7 +52,7 @@ export function CheckoutCoffeeItem({ coffee }: CheckoutCoffeeItemProps) {
             quantity={coffee.qnt}
             onMinusMinusQuantityChange={handleMinusQuantityChange}
             onPlusQuantityChange={handlePlusQuantityChange}
-            onChange={handleChangeQuantityChange}
+            onChange={handleChangeQuantity}
           />
           <Button
             variant="default"

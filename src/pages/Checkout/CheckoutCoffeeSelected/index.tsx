@@ -9,12 +9,37 @@ import {
   CheckoutCoffeeSelectedContainer,
   CheckoutSeparatorItem,
 } from './styles'
-import { CheckoutCoffeeItem } from '../CheckoutCoffeeItem'
-import { ShoppingCartContext } from '../../../context/ShoppingCartContext'
+import { CheckoutCoffeeItem } from '../components/CheckoutCoffeeItem'
+import {
+  CoffeeItem,
+  ShoppingCartContext,
+} from '../../../context/ShoppingCartContext'
 
 export function CheckoutCoffeeSelected() {
-  const { cart, deliveryTax, totalAmountCheckout } =
-    useContext(ShoppingCartContext)
+  const {
+    cart,
+    deliveryTax,
+    totalAmountCheckout,
+    addCoffeInShoppingCart,
+    removeCoffeeInShoppingCart,
+  } = useContext(ShoppingCartContext)
+
+  function changePlusQuantity(coffee: CoffeeItem) {
+    addCoffeInShoppingCart({ ...coffee, qnt: coffee.qnt + 1 })
+  }
+
+  function changeMinusQuantity(coffee: CoffeeItem) {
+    addCoffeInShoppingCart({ ...coffee, qnt: coffee.qnt - 1 })
+  }
+
+  function changeQuantity(coffee: CoffeeItem, qnt: number) {
+    addCoffeInShoppingCart({ ...coffee, qnt })
+  }
+
+  function deleteCoffeeInShoppingCart(coffee: CoffeeItem) {
+    removeCoffeeInShoppingCart(coffee.id)
+  }
+
   return (
     <CheckoutCoffeeSelectedContainer>
       <h2>Cafés selecionados</h2>
@@ -23,7 +48,15 @@ export function CheckoutCoffeeSelected() {
           <ul>
             {cart.map((coffee) => (
               <div key={coffee.id}>
-                <CheckoutCoffeeItem coffee={coffee} />
+                <CheckoutCoffeeItem
+                  coffee={coffee}
+                  onHandleChangeQuantity={changeQuantity}
+                  onHandleMinusQuantityChange={changeMinusQuantity}
+                  onHandlePlusQuantityChange={changePlusQuantity}
+                  onHandleRemoveCoffeeInShoppingCart={
+                    deleteCoffeeInShoppingCart
+                  }
+                />
                 {cart.length > 1 && <CheckoutSeparatorItem />}
               </div>
             ))}
