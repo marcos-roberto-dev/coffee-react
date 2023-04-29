@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { Button } from '../../../components/Buttons'
@@ -9,34 +10,44 @@ import {
   CheckoutSeparatorItem,
 } from './styles'
 import { CheckoutCoffeeItem } from '../CheckoutCoffeeItem'
+import { ShoppingCartContext } from '../../../context/ShoppingCartContext'
 
 export function CheckoutCoffeeSelected() {
+  const { cart, deliveryTax, totalAmountCheckout } =
+    useContext(ShoppingCartContext)
   return (
     <CheckoutCoffeeSelectedContainer>
       <h2>Cafés selecionados</h2>
       <CheckoutCoffeeListContainer>
         <Card>
           <ul>
-            <CheckoutCoffeeItem />
-            <CheckoutSeparatorItem />
-            <CheckoutCoffeeItem />
+            {cart.map((coffee) => (
+              <div key={coffee.id}>
+                <CheckoutCoffeeItem coffee={coffee} />
+                {cart.length > 1 && <CheckoutSeparatorItem />}
+              </div>
+            ))}
           </ul>
 
           <div>
-            <CheckoutSeparatorItem />
             <CheckoutAmount>
               <div>
                 <div>Total de itens</div>
-                <span>R$ 29,70</span>
+                <span>R$ {totalAmountCheckout().totalAmountCoffees}</span>
               </div>
 
               <div>
                 <div>Entrega</div>
-                <span>R$ 3,50</span>
+                <span>
+                  R${' '}
+                  {deliveryTax.toLocaleString('pt-br', {
+                    minimumFractionDigits: 2,
+                  })}
+                </span>
               </div>
               <div>
                 <h4>Total</h4>
-                <h4>R$ 33,20</h4>
+                <h4>R$ {totalAmountCheckout().totalAmountWithDelivery}</h4>
               </div>
             </CheckoutAmount>
             <NavLink to="/success">

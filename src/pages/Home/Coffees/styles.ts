@@ -54,20 +54,22 @@ export const CoffeContentText = styled.div`
     text-align: center;
   }
 
-  span:first-child {
-    background: ${(props) => props.theme['--yellow-light']};
-    color: ${(props) => props.theme['--yellow-dark']};
-    font-size: 0.625rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 5rem;
-    font-weight: bold;
-  }
-
-  span:last-child {
+  > span:last-child {
     margin-top: 0.5rem;
     color: ${(props) => props.theme['--base-label']};
     font-size: 0.875rem;
     line-height: 130%;
+  }
+
+  > div {
+    span {
+      background: ${(props) => props.theme['--yellow-light']};
+      color: ${(props) => props.theme['--yellow-dark']};
+      font-size: 0.625rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 5rem;
+      font-weight: bold;
+    }
   }
 `
 export const CoffeFooter = styled.footer`
@@ -92,6 +94,7 @@ export const CoffeeControl = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
 `
 export const CoffeePrice = styled.div`

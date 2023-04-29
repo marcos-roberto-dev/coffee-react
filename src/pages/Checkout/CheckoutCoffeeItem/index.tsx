@@ -8,16 +8,54 @@ import {
 } from './styles'
 
 import CoffeeIMG from '../../../assets/coffees/americano.svg'
+import {
+  CoffeeItem,
+  ShoppingCartContext,
+} from '../../../context/ShoppingCartContext'
+import { useContext } from 'react'
 
-export function CheckoutCoffeeItem() {
+interface CheckoutCoffeeItemProps {
+  coffee: CoffeeItem
+}
+
+export function CheckoutCoffeeItem({ coffee }: CheckoutCoffeeItemProps) {
+  const { addCoffeInShoppingCart, removeCoffeeInShoppingCart } =
+    useContext(ShoppingCartContext)
+
+  function handlePlusQuantityChange() {
+    addCoffeInShoppingCart({ ...coffee, qnt: coffee.qnt + 1 })
+  }
+
+  function handleMinusQuantityChange() {
+    addCoffeInShoppingCart({ ...coffee, qnt: coffee.qnt - 1 })
+  }
+
+  function handleChangeQuantityChange(qnt: number) {
+    addCoffeInShoppingCart({ ...coffee, qnt })
+  }
+
+  function handleRemoveCoffeeInShoppingCart() {
+    removeCoffeeInShoppingCart(coffee.id)
+  }
+
   return (
     <CheckoutCoffeeItemContainer>
       <img src={CoffeeIMG} alt="Coffee" />
       <div>
-        <h4>Expresso Tradicional</h4>
+        <h4>{coffee.label}</h4>
         <CheckoutCoffeeItemControl>
-          <ButtonQuantityItem />
-          <Button variant="default" size="small">
+          <ButtonQuantityItem
+            coffeeId={coffee.id}
+            quantity={coffee.qnt}
+            onMinusMinusQuantityChange={handleMinusQuantityChange}
+            onPlusQuantityChange={handlePlusQuantityChange}
+            onChange={handleChangeQuantityChange}
+          />
+          <Button
+            variant="default"
+            size="small"
+            onClick={handleRemoveCoffeeInShoppingCart}
+          >
             <Trash size={16} color={defaultTheme['--purple']} />
             Remover
           </Button>
