@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CheckoutOrderContainer = styled.form`
+export const CheckoutOrderContainer = styled.div`
   display: flex;
   flex-direction: column;
   > h2 {

@@ -1,3 +1,4 @@
+import { useEffect, useState, useContext } from 'react'
 import {
   CoffeContentText,
   CoffeFooter,
@@ -9,7 +10,6 @@ import {
 } from './styles'
 import { ButtonQuantityItem } from '../../../components/ButtonQuantityItem'
 import { ShoppingCart } from 'phosphor-react'
-import { useState, useContext } from 'react'
 import {
   CoffeeItem,
   ShoppingCartContext,
@@ -108,6 +108,11 @@ export function CoffeesSection() {
     setCoffees(coffeeMap)
   }
 
+  function resetQntCoffee() {
+    const coffeeMap = coffees.map((coffee) => ({ ...coffee, qnt: 0 }))
+    setCoffees(coffeeMap)
+  }
+
   function handlePlusQuantityChange(id: number) {
     handleChange(1, id)
   }
@@ -123,6 +128,12 @@ export function CoffeesSection() {
   function addShoppingCart(coffee: CoffeeItem): void {
     addCoffeInShoppingCart(coffee)
   }
+
+  useEffect(() => {
+    return () => {
+      resetQntCoffee()
+    }
+  }, [])
 
   return (
     <CoffeesContainer>

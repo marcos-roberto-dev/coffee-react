@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useFormContext } from 'react-hook-form'
 import {
   Bank,
   CreditCard,
@@ -17,6 +19,13 @@ import { Button } from '../../../components/Buttons'
 import { defaultTheme } from '../../../styles/themes/default'
 
 export function CheckoutOrder() {
+  const { register, reset } = useFormContext()
+
+  useEffect(() => {
+    return () => {
+      reset()
+    }
+  }, [reset])
   return (
     <CheckoutOrderContainer>
       <h2>Complete seu pedido</h2>
@@ -33,13 +42,17 @@ export function CheckoutOrder() {
           </header>
 
           <FormInputs>
-            <input type="number" placeholder="CEP" />
-            <input type="text" placeholder="Rua" />
-            <input type="number" placeholder="Número" />
-            <input type="text" placeholder="Complemento" />
-            <input type="text" placeholder="Bairro" />
-            <input type="text" placeholder="Cidade" />
-            <input type="text" placeholder="UF" />
+            <input type="number" placeholder="CEP" {...register('cep')} />
+            <input type="text" placeholder="Rua" {...register('street')} />
+            <input type="number" placeholder="Número" {...register('number')} />
+            <input
+              type="text"
+              placeholder="Complemento"
+              {...register('complement')}
+            />
+            <input type="text" placeholder="Bairro" {...register('district')} />
+            <input type="text" placeholder="Cidade" {...register('city')} />
+            <input type="text" placeholder="UF" {...register('uf')} />
           </FormInputs>
         </FormCard>
       </Card>
@@ -61,18 +74,60 @@ export function CheckoutOrder() {
 
           <ul>
             <li>
-              <Button size="large" variant="default">
+              <label htmlFor="credit">
+                <div
+                  style={{
+                    width: '80px',
+                    height: '80px',
+                  }}
+                ></div>
+              </label>
+              <input
+                type="radio"
+                id="credit"
+                value={'credit'}
+                {...register('paymentMethod')}
+              />
+              <Button size="large" variant="default" type="button">
                 <CreditCard size={16} color={defaultTheme['--purple']} />
                 Cartão de Crédito
               </Button>
             </li>
             <li>
+              <label htmlFor="debit">
+                <div
+                  style={{
+                    width: '80px',
+                    height: '80px',
+                  }}
+                ></div>
+              </label>
+              <input
+                type="radio"
+                id="debit"
+                value={'debit'}
+                {...register('paymentMethod')}
+              />
               <Button size="large" variant="default">
                 <Bank size={16} color={defaultTheme['--purple']} />
                 Cartão de Débito
               </Button>
             </li>
             <li>
+              <label htmlFor="money">
+                <div
+                  style={{
+                    width: '80px',
+                    height: '80px',
+                  }}
+                ></div>
+              </label>
+              <input
+                type="radio"
+                id="money"
+                value={'money'}
+                {...register('paymentMethod')}
+              />
               <Button size="large" variant="default">
                 <Money size={16} color={defaultTheme['--purple']} />
                 Dinheiro

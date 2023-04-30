@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
 
 import { Button } from '../../../components/Buttons'
 import { Card } from '../../../components/Card'
@@ -83,11 +83,11 @@ export function CheckoutCoffeeSelected() {
                 <h4>R$ {totalAmountCheckout().totalAmountWithDelivery}</h4>
               </div>
             </CheckoutAmount>
-            <NavLink to="/success">
-              <Button size="normal" variant="yellow">
-                Confirmar Pedido
-              </Button>
-            </NavLink>
+            {/* <NavLink to="/success"> */}
+            <Button size="normal" variant="yellow">
+              Confirmar Pedido
+            </Button>
+            {/* </NavLink> */}
           </div>
         </Card>
       </CheckoutCoffeeListContainer>

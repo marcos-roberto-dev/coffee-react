@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CheckoutContainer = styled.main`
+export const CheckoutContainer = styled.form`
   overflow: hidden;
   margin-top: 2.5rem;
   margin-bottom: 15rem;

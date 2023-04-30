@@ -7,7 +7,6 @@ import {
   CheckoutCoffeeItemControl,
 } from './styles'
 
-import CoffeeIMG from '../../../../assets/coffees/americano.svg'
 import { CoffeeItem } from '../../../../context/ShoppingCartContext'
 
 interface CheckoutCoffeeItemProps {
@@ -43,7 +42,15 @@ export function CheckoutCoffeeItem({
 
   return (
     <CheckoutCoffeeItemContainer>
-      <img src={CoffeeIMG} alt="Coffee" />
+      <img
+        src={
+          new URL(
+            `../../../../assets/coffees/${coffee.name}.svg`,
+            import.meta.url,
+          ).href
+        }
+        alt={coffee.label}
+      />
       <div>
         <h4>{coffee.label}</h4>
         <CheckoutCoffeeItemControl>
@@ -64,7 +71,12 @@ export function CheckoutCoffeeItem({
           </Button>
         </CheckoutCoffeeItemControl>
       </div>
-      <span>R$ 9,90</span>
+      <span>
+        R${' '}
+        {coffee.price.toLocaleString('pt-br', {
+          minimumFractionDigits: 2,
+        })}
+      </span>
     </CheckoutCoffeeItemContainer>
   )
 }
