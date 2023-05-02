@@ -1,4 +1,10 @@
 import { useEffect, useState, useContext } from 'react'
+
+import { ButtonQuantityItem } from '../../../components/ButtonQuantityItem'
+import { ShoppingCart } from 'phosphor-react'
+import { ShoppingCartContext } from '../../../context/ShoppingCartContext'
+import { CoffeeItem } from '../../../reducers/shoppingcart/reducer'
+
 import {
   CoffeContentText,
   CoffeFooter,
@@ -8,12 +14,6 @@ import {
   CoffeePrice,
   CoffeesContainer,
 } from './styles'
-import { ButtonQuantityItem } from '../../../components/ButtonQuantityItem'
-import { ShoppingCart } from 'phosphor-react'
-import {
-  CoffeeItem,
-  ShoppingCartContext,
-} from '../../../context/ShoppingCartContext'
 
 const coffeesAPI = [
   {
@@ -133,6 +133,7 @@ export function CoffeesSection() {
     return () => {
       resetQntCoffee()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

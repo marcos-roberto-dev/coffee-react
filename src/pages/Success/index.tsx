@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
-import { SuccessPageContainer, SuccessPageInformation } from './styles'
-import deliveryIMG from '../../assets/delivery.svg'
-import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
-import { IconWithLabel } from '../Home/Hero/styles'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+
+import { IconWithLabel } from '../Home/Hero/styles'
 import { NewCheckoutFormData } from '../../App'
+
+import deliveryIMG from '../../assets/delivery.svg'
+import { SuccessPageContainer, SuccessPageInformation } from './styles'
 
 const TYPE_METHOD_PAYMENT = {
   debit: 'Cartão de Débito',

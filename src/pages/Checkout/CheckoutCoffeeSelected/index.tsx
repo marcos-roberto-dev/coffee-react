@@ -1,19 +1,17 @@
 import { useContext } from 'react'
-// import { NavLink } from 'react-router-dom'
 
 import { Button } from '../../../components/Buttons'
 import { Card } from '../../../components/Card'
+import { CheckoutCoffeeItem } from '../components/CheckoutCoffeeItem'
+import { ShoppingCartContext } from '../../../context/ShoppingCartContext'
+import { CoffeeItem } from '../../../reducers/shoppingcart/reducer'
+
 import {
   CheckoutAmount,
   CheckoutCoffeeListContainer,
   CheckoutCoffeeSelectedContainer,
   CheckoutSeparatorItem,
 } from './styles'
-import { CheckoutCoffeeItem } from '../components/CheckoutCoffeeItem'
-import {
-  CoffeeItem,
-  ShoppingCartContext,
-} from '../../../context/ShoppingCartContext'
 
 export function CheckoutCoffeeSelected() {
   const {
@@ -83,11 +81,9 @@ export function CheckoutCoffeeSelected() {
                 <h4>R$ {totalAmountCheckout().totalAmountWithDelivery}</h4>
               </div>
             </CheckoutAmount>
-            {/* <NavLink to="/success"> */}
             <Button size="normal" variant="yellow">
               Confirmar Pedido
             </Button>
-            {/* </NavLink> */}
           </div>
         </Card>
       </CheckoutCoffeeListContainer>

@@ -1,10 +1,12 @@
 import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
-import { HeaderButtonsContainer, HeaderContainer } from './styles'
-import CoffeeLogo from '../../assets/logo.svg'
-import { Button } from '../Buttons'
 import { MapPin, ShoppingCart } from 'phosphor-react'
+
+import { Button } from '../Buttons'
 import { ShoppingCartContext } from '../../context/ShoppingCartContext'
+
+import CoffeeLogo from '../../assets/logo.svg'
+import { HeaderButtonsContainer, HeaderContainer } from './styles'
 
 export function Header() {
   const { cart } = useContext(ShoppingCartContext)

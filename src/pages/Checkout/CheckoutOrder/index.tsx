@@ -8,7 +8,11 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
+
 import { Card } from '../../../components/Card'
+import { defaultTheme } from '../../../styles/themes/default'
+import { ButtonInputRadio } from '../../../components/ButtonInputRadio'
+
 import {
   CheckoutHeaderContent,
   CheckoutOrderContainer,
@@ -16,8 +20,6 @@ import {
   FormInputs,
   SelectedKindPayment,
 } from './styles'
-import { defaultTheme } from '../../../styles/themes/default'
-import { ButtonInputRadio } from '../../../components/ButtonInputRadio'
 
 export function CheckoutOrder() {
   const {

@@ -1,11 +1,12 @@
+import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+
+import HeroImg from '../../../assets/hero.svg'
 import {
   HeroContainer,
   HeroIconsContainer,
   HeroTextContainer,
   IconWithLabel,
 } from './styles'
-import HeroImg from '../../../assets/hero.svg'
-import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 
 export function HeroSection() {
   return (

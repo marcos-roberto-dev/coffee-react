@@ -1,5 +1,6 @@
 import { ChangeEvent, ReactNode } from 'react'
 import { Minus, Plus } from 'phosphor-react'
+
 import { CoffeeControlShip } from './styles'
 
 interface ButtonQuantityItemProps {
@@ -34,7 +35,7 @@ export function ButtonQuantityItem({
   return (
     <CoffeeControlShip>
       <div>
-        <button onClick={onHandleMinusChange}>
+        <button onClick={onHandleMinusChange} type="button">
           <Minus size={14} />
         </button>
         {children || (
@@ -46,7 +47,7 @@ export function ButtonQuantityItem({
             onChange={handleChange}
           />
         )}
-        <button onClick={onHandlePlusChange}>
+        <button onClick={onHandlePlusChange} type="button">
           <Plus size={14} />
         </button>
       </div>

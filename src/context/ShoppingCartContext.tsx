@@ -1,13 +1,14 @@
-import { createContext, useState, ReactNode } from 'react'
-export interface CoffeeItem {
-  id: number
-  name: string
-  label: string
-  qnt: number
-  price: number
-  kinds: string[]
-  description: string
-}
+import { createContext, ReactNode, useReducer } from 'react'
+import {
+  CoffeeItem,
+  ShoppingCartState,
+  shoppingCartReducer,
+} from '../reducers/shoppingcart/reducer'
+import {
+  addNewCoffeeInShoppingCartAction,
+  deleteCoffeeInShoppingCartAction,
+  clearCoffeeInShoppingCartAction,
+} from '../reducers/shoppingcart/actions'
 
 interface TotalAmount {
   totalAmountCoffees: string
@@ -32,33 +33,26 @@ export const ShoppingCartContext = createContext({} as IShoppingCartContext)
 export function ShoppingCartContextProvider({
   children,
 }: ShoppingCartContextProviderProps) {
-  const [deliveryTax] = useState(3.5)
-  const [cart, setCart] = useState<CoffeeItem[]>([])
+  const [state, dispatch] = useReducer(shoppingCartReducer, {
+    cart: [],
+    deliveryTax: 3.5,
+  } as ShoppingCartState)
 
   function addCoffeeInShoppingCart(coffee: CoffeeItem) {
-    const hasItemInShoppingCart = cart.find(
-      (shoppingCartItem) => shoppingCartItem.id === coffee.id,
-    )
-    if (hasItemInShoppingCart) {
-      const shoppingCartMap = cart.map((shoppingCartItem) => {
-        if (shoppingCartItem.id === coffee.id) {
-          return {
-            ...shoppingCartItem,
-            qnt: coffee.qnt,
-          }
-        }
-        return coffee
-      })
-      setCart(shoppingCartMap)
-      return
-    }
+    dispatch(addNewCoffeeInShoppingCartAction({ newCoffee: coffee }))
+  }
 
-    setCart((state) => [...state, coffee])
+  function removeCoffeeInShoppingCart(id: number) {
+    dispatch(deleteCoffeeInShoppingCartAction(id))
+  }
+
+  function clearCoffeeShoppingCart() {
+    dispatch(clearCoffeeInShoppingCartAction())
   }
 
   function totalAmountCheckout() {
     return {
-      totalAmountCoffees: cart
+      totalAmountCoffees: state.cart
         .reduce(
           (previous, currentValue) =>
             (previous += currentValue.price * currentValue.qnt),
@@ -67,11 +61,11 @@ export function ShoppingCartContextProvider({
         .toLocaleString('pt-br', {
           minimumFractionDigits: 2,
         }),
-      totalAmountWithDelivery: cart
+      totalAmountWithDelivery: state.cart
         .reduce(
           (previous, currentValue) =>
             (previous += currentValue.price * currentValue.qnt),
-          deliveryTax,
+          state.deliveryTax,
         )
         .toLocaleString('pt-br', {
           minimumFractionDigits: 2,
@@ -79,20 +73,11 @@ export function ShoppingCartContextProvider({
     }
   }
 
-  function removeCoffeeInShoppingCart(id: number) {
-    const shoppingCartFilter = cart.filter((coffee) => coffee.id !== id)
-    setCart(shoppingCartFilter)
-  }
-
-  function clearCoffeeShoppingCart() {
-    setCart([])
-  }
-
   return (
     <ShoppingCartContext.Provider
       value={{
-        cart,
-        deliveryTax,
+        cart: state.cart,
+        deliveryTax: state.deliveryTax,
         addCoffeeInShoppingCart,
         totalAmountCheckout,
         removeCoffeeInShoppingCart,

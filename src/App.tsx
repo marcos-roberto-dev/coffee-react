@@ -2,10 +2,12 @@ import { useForm, FormProvider } from 'react-hook-form'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ThemeProvider } from 'styled-components'
+
 import { Router } from './Router'
 import { GlobalStyles } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
 import { ShoppingCartContextProvider } from './context/ShoppingCartContext'
+
 const regexOne = /['credit', 'debit', 'money']/
 const checkoutValidateSchema = zod.object({
   cep: zod
