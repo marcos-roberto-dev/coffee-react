@@ -64,11 +64,7 @@ export function CheckoutOrder() {
               />
             </div>
             <div>
-              <input
-                type="number"
-                placeholder="Número"
-                {...register('number')}
-              />
+              <input type="text" placeholder="Número" {...register('number')} />
               <ErrorMessage
                 errors={errors}
                 name="number"

@@ -20,20 +20,20 @@ export function CheckoutCoffeeSelected() {
     cart,
     deliveryTax,
     totalAmountCheckout,
-    addCoffeInShoppingCart,
+    addCoffeeInShoppingCart,
     removeCoffeeInShoppingCart,
   } = useContext(ShoppingCartContext)
 
   function changePlusQuantity(coffee: CoffeeItem) {
-    addCoffeInShoppingCart({ ...coffee, qnt: coffee.qnt + 1 })
+    addCoffeeInShoppingCart({ ...coffee, qnt: coffee.qnt + 1 })
   }
 
   function changeMinusQuantity(coffee: CoffeeItem) {
-    addCoffeInShoppingCart({ ...coffee, qnt: coffee.qnt - 1 })
+    addCoffeeInShoppingCart({ ...coffee, qnt: coffee.qnt - 1 })
   }
 
   function changeQuantity(coffee: CoffeeItem, qnt: number) {
-    addCoffeInShoppingCart({ ...coffee, qnt })
+    addCoffeeInShoppingCart({ ...coffee, qnt })
   }
 
   function deleteCoffeeInShoppingCart(coffee: CoffeeItem) {

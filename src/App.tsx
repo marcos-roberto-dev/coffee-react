@@ -26,9 +26,9 @@ const checkoutValidateSchema = zod.object({
     .regex(regexOne, { message: 'Selecione um metodo de pagamento' }),
 })
 
-type newCheckoutFormData = zod.infer<typeof checkoutValidateSchema>
+export type NewCheckoutFormData = zod.infer<typeof checkoutValidateSchema>
 export function App() {
-  const methods = useForm<newCheckoutFormData>({
+  const methods = useForm<NewCheckoutFormData>({
     resolver: zodResolver(checkoutValidateSchema),
     defaultValues: {
       cep: '',

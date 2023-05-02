@@ -1,9 +1,29 @@
+import { useEffect } from 'react'
 import { SuccessPageContainer, SuccessPageInformation } from './styles'
 import deliveryIMG from '../../assets/delivery.svg'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { IconWithLabel } from '../Home/Hero/styles'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { NewCheckoutFormData } from '../../App'
+
+const TYPE_METHOD_PAYMENT = {
+  debit: 'Cartão de Débito',
+  credit: 'Cartão de Crédito',
+  money: 'Dinheiro',
+}
 
 export function SuccessPage() {
+  const { state } = useLocation()
+  const formData = state as NewCheckoutFormData
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    console.log(state)
+    if (!state) {
+      navigate('/')
+    }
+  }, [navigate, state])
+
   return (
     <SuccessPageContainer>
       <div>
@@ -21,9 +41,14 @@ export function SuccessPage() {
               </IconWithLabel>
               <div>
                 <div>
-                  Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                  Entrega em{' '}
+                  <strong>
+                    {formData.street} {formData.number}
+                  </strong>
                 </div>
-                <div>Farrapos - Porto Alegre, RS</div>
+                <div>
+                  {formData.district} - {formData.city}, {formData.uf}
+                </div>
               </div>
             </li>
             <li>
@@ -45,7 +70,13 @@ export function SuccessPage() {
               </IconWithLabel>
               <div>
                 <div>Pagamento na entrega</div>
-                <strong>Cartão de Crédito</strong>
+                <strong>
+                  {
+                    TYPE_METHOD_PAYMENT[
+                      formData.paymentMethod as keyof typeof TYPE_METHOD_PAYMENT
+                    ]
+                  }
+                </strong>
               </div>
             </li>
           </ul>

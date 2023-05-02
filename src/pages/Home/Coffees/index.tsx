@@ -93,7 +93,7 @@ const coffeesAPI = [
 ]
 export function CoffeesSection() {
   const [coffees, setCoffees] = useState(coffeesAPI)
-  const { addCoffeInShoppingCart } = useContext(ShoppingCartContext)
+  const { addCoffeeInShoppingCart } = useContext(ShoppingCartContext)
 
   function handleChange(qnt: number, id: number, type = 'DEFAULT') {
     const coffeeMap = coffees.map((coffee) => {
@@ -126,7 +126,7 @@ export function CoffeesSection() {
   }
 
   function addShoppingCart(coffee: CoffeeItem): void {
-    addCoffeInShoppingCart(coffee)
+    addCoffeeInShoppingCart(coffee)
   }
 
   useEffect(() => {

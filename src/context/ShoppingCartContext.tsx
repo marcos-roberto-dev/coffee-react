@@ -17,9 +17,10 @@ interface TotalAmount {
 interface IShoppingCartContext {
   cart: CoffeeItem[]
   deliveryTax: number
-  addCoffeInShoppingCart: (coffee: CoffeeItem) => void
+  addCoffeeInShoppingCart: (coffee: CoffeeItem) => void
   totalAmountCheckout: () => TotalAmount
   removeCoffeeInShoppingCart: (id: number) => void
+  clearCoffeeShoppingCart: () => void
 }
 
 interface ShoppingCartContextProviderProps {
@@ -34,7 +35,7 @@ export function ShoppingCartContextProvider({
   const [deliveryTax] = useState(3.5)
   const [cart, setCart] = useState<CoffeeItem[]>([])
 
-  function addCoffeInShoppingCart(coffee: CoffeeItem) {
+  function addCoffeeInShoppingCart(coffee: CoffeeItem) {
     const hasItemInShoppingCart = cart.find(
       (shoppingCartItem) => shoppingCartItem.id === coffee.id,
     )
@@ -83,14 +84,19 @@ export function ShoppingCartContextProvider({
     setCart(shoppingCartFilter)
   }
 
+  function clearCoffeeShoppingCart() {
+    setCart([])
+  }
+
   return (
     <ShoppingCartContext.Provider
       value={{
         cart,
         deliveryTax,
-        addCoffeInShoppingCart,
+        addCoffeeInShoppingCart,
         totalAmountCheckout,
         removeCoffeeInShoppingCart,
+        clearCoffeeShoppingCart,
       }}
     >
       {children}

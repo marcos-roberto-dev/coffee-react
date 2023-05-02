@@ -5,18 +5,18 @@ import { CheckoutCoffeeSelected } from './CheckoutCoffeeSelected'
 import { CheckoutOrder } from './CheckoutOrder'
 import { CheckoutContainer } from './styled'
 import { ShoppingCartContext } from '../../context/ShoppingCartContext'
+import { NewCheckoutFormData } from '../../App'
 
 export function CheckoutPage() {
-  const { cart } = useContext(ShoppingCartContext)
+  const { cart, clearCoffeeShoppingCart } = useContext(ShoppingCartContext)
 
   const navigate = useNavigate()
-  const { handleSubmit } = useFormContext()
+  const { handleSubmit } = useFormContext<NewCheckoutFormData>()
 
-  const onSubmit = (data: any, e: any) => {
-    console.log(data)
-    navigate('/success')
+  const onSubmit = (data: NewCheckoutFormData) => {
+    navigate('/success', { state: data })
+    clearCoffeeShoppingCart()
   }
-  const onError = (errors: any, e: any) => console.log(errors, e)
 
   useEffect(() => {
     if (!cart.length) {
@@ -25,7 +25,7 @@ export function CheckoutPage() {
   }, [cart, navigate])
 
   return (
-    <CheckoutContainer onSubmit={handleSubmit(onSubmit, onError)}>
+    <CheckoutContainer onSubmit={handleSubmit(onSubmit)}>
       <CheckoutOrder />
       <CheckoutCoffeeSelected />
     </CheckoutContainer>
