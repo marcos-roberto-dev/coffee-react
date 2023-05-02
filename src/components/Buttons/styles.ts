@@ -62,7 +62,6 @@ export const BaseButton = styled.button<ButtonPropsStyle>`
       border: ${1}px solid ${props.theme['--purple']};
       background: ${props.theme['--purple-light']};
     `}
-
   ${(props) =>
     props.clickable &&
     css`
@@ -76,8 +75,7 @@ export const BaseButton = styled.button<ButtonPropsStyle>`
         color: ${colors[props.variant].color};
       }
     `}
-
-  span {
+    span {
     background: ${(props) => colors[props.variant].color};
     color: ${(props) => colors[props.variant].background};
     width: 1.25rem;

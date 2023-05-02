@@ -15,8 +15,8 @@ import {
   FormInputs,
   SelectedKindPayment,
 } from './styles'
-import { Button } from '../../../components/Buttons'
 import { defaultTheme } from '../../../styles/themes/default'
+import { ButtonInputRadio } from '../../../components/ButtonInputRadio'
 
 export function CheckoutOrder() {
   const { register, reset } = useFormContext()
@@ -74,64 +74,34 @@ export function CheckoutOrder() {
 
           <ul>
             <li>
-              <label htmlFor="credit">
-                <div
-                  style={{
-                    width: '80px',
-                    height: '80px',
-                  }}
-                ></div>
-              </label>
-              <input
-                type="radio"
-                id="credit"
-                value={'credit'}
-                {...register('paymentMethod')}
-              />
-              <Button size="large" variant="default" type="button">
+              <ButtonInputRadio
+                idLabel="credit"
+                registerName="paymentMethod"
+                value="credit"
+              >
                 <CreditCard size={16} color={defaultTheme['--purple']} />
                 Cartão de Crédito
-              </Button>
+              </ButtonInputRadio>
             </li>
             <li>
-              <label htmlFor="debit">
-                <div
-                  style={{
-                    width: '80px',
-                    height: '80px',
-                  }}
-                ></div>
-              </label>
-              <input
-                type="radio"
-                id="debit"
-                value={'debit'}
-                {...register('paymentMethod')}
-              />
-              <Button size="large" variant="default">
+              <ButtonInputRadio
+                idLabel="debit"
+                registerName="paymentMethod"
+                value="debit"
+              >
                 <Bank size={16} color={defaultTheme['--purple']} />
                 Cartão de Débito
-              </Button>
+              </ButtonInputRadio>
             </li>
             <li>
-              <label htmlFor="money">
-                <div
-                  style={{
-                    width: '80px',
-                    height: '80px',
-                  }}
-                ></div>
-              </label>
-              <input
-                type="radio"
-                id="money"
-                value={'money'}
-                {...register('paymentMethod')}
-              />
-              <Button size="large" variant="default">
+              <ButtonInputRadio
+                idLabel="money"
+                registerName="paymentMethod"
+                value="money"
+              >
                 <Money size={16} color={defaultTheme['--purple']} />
                 Dinheiro
-              </Button>
+              </ButtonInputRadio>
             </li>
           </ul>
         </SelectedKindPayment>
