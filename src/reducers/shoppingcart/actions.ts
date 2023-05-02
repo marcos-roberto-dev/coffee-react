@@ -22,6 +22,6 @@ export function deleteCoffeeInShoppingCartAction(id: number) {
 
 export function clearCoffeeInShoppingCartAction() {
   return {
-    type: TYPES_SHOPPING_CART_MUTATION.DELETE_COFFEE.type,
+    type: TYPES_SHOPPING_CART_MUTATION.CLEAR_SHOPPING_CART.type,
   }
 }

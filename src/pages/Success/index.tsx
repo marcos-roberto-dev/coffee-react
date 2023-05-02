@@ -20,11 +20,10 @@ export function SuccessPage() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log(state)
-    if (!state) {
+    if (!formData) {
       navigate('/')
     }
-  }, [navigate, state])
+  }, [])
 
   return (
     <SuccessPageContainer>
@@ -35,52 +34,56 @@ export function SuccessPage() {
       <SuccessPageInformation>
         <div>
           <ul>
-            <li>
-              <IconWithLabel variant="coffee">
-                <div>
-                  <MapPin size={16} weight="fill" />
-                </div>
-              </IconWithLabel>
-              <div>
-                <div>
-                  Entrega em{' '}
-                  <strong>
-                    {formData.street} {formData.number}
-                  </strong>
-                </div>
-                <div>
-                  {formData.district} - {formData.city}, {formData.uf}
-                </div>
-              </div>
-            </li>
-            <li>
-              <IconWithLabel variant="timer">
-                <div>
-                  <Timer size={16} weight="fill" />
-                </div>
-              </IconWithLabel>
-              <div>
-                <div>Previsão de entrega</div>
-                <strong>20 min - 30 min </strong>
-              </div>
-            </li>
-            <li>
-              <IconWithLabel variant="shopping">
-                <div>
-                  <CurrencyDollar size={16} weight="fill" />
-                </div>
-              </IconWithLabel>
-              <div>
-                <div>Pagamento na entrega</div>
-                <strong>
-                  {
-                    TYPE_METHOD_PAYMENT[
-                      formData.paymentMethod as keyof typeof TYPE_METHOD_PAYMENT
-                    ]
-                  }
-                </strong>
-              </div>
-            </li>
+            {formData && (
+              <>
+                <li>
+                  <IconWithLabel variant="coffee">
+                    <div>
+                      <MapPin size={16} weight="fill" />
+                    </div>
+                  </IconWithLabel>
+                  <div>
+                    <div>
+                      Entrega em{' '}
+                      <strong>
+                        {formData.street} {formData.number}
+                      </strong>
+                    </div>
+                    <div>
+                      {formData.district} - {formData.city}, {formData.uf}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <IconWithLabel variant="timer">
+                    <div>
+                      <Timer size={16} weight="fill" />
+                    </div>
+                  </IconWithLabel>
+                  <div>
+                    <div>Previsão de entrega</div>
+                    <strong>20 min - 30 min </strong>
+                  </div>
+                </li>
+                <li>
+                  <IconWithLabel variant="shopping">
+                    <div>
+                      <CurrencyDollar size={16} weight="fill" />
+                    </div>
+                  </IconWithLabel>
+                  <div>
+                    <div>Pagamento na entrega</div>
+                    <strong>
+                      {
+                        TYPE_METHOD_PAYMENT[
+                          formData.paymentMethod as keyof typeof TYPE_METHOD_PAYMENT
+                        ]
+                      }
+                    </strong>
+                  </div>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <img src={deliveryIMG} alt="Entregador" />

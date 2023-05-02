@@ -33,7 +33,6 @@ export const TYPES_SHOPPING_CART_MUTATION = {
               qnt: payload.newCoffee.qnt,
             }
           }
-          console.log({ ...state, cart: shoppingCartMap })
           return shoppingCartItem
         })
         return { ...state, cart: shoppingCartMap }
