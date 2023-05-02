@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
+import { ErrorMessage } from '@hookform/error-message'
 import {
   Bank,
   CreditCard,
@@ -19,7 +20,11 @@ import { defaultTheme } from '../../../styles/themes/default'
 import { ButtonInputRadio } from '../../../components/ButtonInputRadio'
 
 export function CheckoutOrder() {
-  const { register, reset } = useFormContext()
+  const {
+    register,
+    reset,
+    formState: { errors },
+  } = useFormContext()
 
   useEffect(() => {
     return () => {
@@ -42,17 +47,77 @@ export function CheckoutOrder() {
           </header>
 
           <FormInputs>
-            <input type="number" placeholder="CEP" {...register('cep')} />
-            <input type="text" placeholder="Rua" {...register('street')} />
-            <input type="number" placeholder="Número" {...register('number')} />
-            <input
-              type="text"
-              placeholder="Complemento"
-              {...register('complement')}
-            />
-            <input type="text" placeholder="Bairro" {...register('district')} />
-            <input type="text" placeholder="Cidade" {...register('city')} />
-            <input type="text" placeholder="UF" {...register('uf')} />
+            <div>
+              <input type="number" placeholder="CEP" {...register('cep')} />
+              <ErrorMessage
+                errors={errors}
+                name="cep"
+                render={({ message }) => <span>{message}</span>}
+              />
+            </div>
+            <div>
+              <input type="text" placeholder="Rua" {...register('street')} />
+              <ErrorMessage
+                errors={errors}
+                name="street"
+                render={({ message }) => <span>{message}</span>}
+              />
+            </div>
+            <div>
+              <input
+                type="number"
+                placeholder="Número"
+                {...register('number')}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="number"
+                render={({ message }) => <span>{message}</span>}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Complemento"
+                {...register('complement')}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="complement"
+                render={({ message }) => <span>{message}</span>}
+              />
+            </div>
+
+            <div>
+              <input
+                type="text"
+                placeholder="Bairro"
+                {...register('district')}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="district"
+                render={({ message }) => <span>{message}</span>}
+              />
+            </div>
+
+            <div>
+              <input type="text" placeholder="Cidade" {...register('city')} />
+              <ErrorMessage
+                errors={errors}
+                name="city"
+                render={({ message }) => <span>{message}</span>}
+              />
+            </div>
+
+            <div>
+              <input type="text" placeholder="UF" {...register('uf')} />
+              <ErrorMessage
+                errors={errors}
+                name="uf"
+                render={({ message }) => <span>{message}</span>}
+              />
+            </div>
           </FormInputs>
         </FormCard>
       </Card>
@@ -104,6 +169,13 @@ export function CheckoutOrder() {
               </ButtonInputRadio>
             </li>
           </ul>
+          <div>
+            <ErrorMessage
+              errors={errors}
+              name="paymentMethod"
+              render={({ message }) => <span>{message}</span>}
+            />
+          </div>
         </SelectedKindPayment>
       </Card>
     </CheckoutOrderContainer>

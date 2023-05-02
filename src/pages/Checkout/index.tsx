@@ -22,7 +22,7 @@ export function CheckoutPage() {
     if (!cart.length) {
       navigate('/')
     }
-  }, [])
+  }, [cart, navigate])
 
   return (
     <CheckoutContainer onSubmit={handleSubmit(onSubmit, onError)}>

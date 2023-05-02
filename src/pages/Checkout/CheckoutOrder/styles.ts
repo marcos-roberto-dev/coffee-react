@@ -34,6 +34,17 @@ export const FormInputs = styled.div`
   grid-template-columns: repeat(3, max-content);
   gap: 1rem;
 
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    span {
+      color: ${(props) => props.theme['--yellow-dark']};
+      font-size: 0.875rem;
+    }
+  }
+
   input {
     background: ${(props) => props.theme['--base-input']};
     color: ${(props) => props.theme['--base-label']};
@@ -65,5 +76,11 @@ export const SelectedKindPayment = styled.div`
     li {
       flex: 1;
     }
+  }
+
+  > div {
+    display: block;
+    margin-top: 0.5rem;
+    color: ${(props) => props.theme['--yellow-dark']};
   }
 `
